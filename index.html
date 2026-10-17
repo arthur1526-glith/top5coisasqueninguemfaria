@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 5 coisas que ninguém faria</title>
+  <style>
+    /* 1. Definição da fonte personalizada */
+    @font-face {
+      font-family: 'MinhaFonteCustom';
+      src: url('sua-fonte.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --rainbow: linear-gradient(90deg, #ff0000 0%, #ff00d4 24%, #001dff 43%, #00ffff 57%, #00ff19 75%, #ffff00 88%, #ff2600 100%);
+      --page-width: 1650px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #fff;
+      color: #000;
+      font-family: 'MinhaFonteCustom', Arial, sans-serif;
+    }
+
+    .site-header {
+      min-height: 194px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 28px;
+      background: var(--rainbow);
+      text-align: center;
+    }
+
+    .site-header h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6.2vw, 6.3rem);
+      line-height: 1.05;
+      font-weight: 900;
+    }
+
+    main {
+      width: min(100%, var(--page-width));
+      margin: 0 auto;
+      padding: 16px 28px 48px;
+    }
+
+    .ranking-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 34%);
+      align-items: center;
+      gap: 24px;
+      min-height: 116px;
+      padding: 8px 0;
+    }
+
+    .ranking-item h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 2.8vw, 2.65rem);
+      line-height: 1.18;
+      font-weight: 800;
+    }
+
+    .image-placeholder {
+      min-height: 95px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .item-image {
+      display: block;
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      object-fit: contain;
+      justify-self: center;
+    }
+
+    .borda-preta {
+      border: 3px solid #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+      border-top: 2px solid #eee;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    @media (max-width: 700px) {
+      .site-header { min-height: 125px; padding: 22px 16px; }
+      main { padding: 14px 18px 36px; }
+      .ranking-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 20px 0;
+      }
+      .ranking-item h2 { font-size: clamp(1.35rem, 6vw, 2rem); }
+      .image-placeholder { min-height: 70px; }
+      .item-image { max-width: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Top 5 coisas que ninguém faria</h1>
+  </header>
+
+  <main>
+    <section class="ranking-item">
+      <h2>Pular de um prédio sem equipamentos:</h2>
+      <div class="image-placeholder">
+        <img class="item-image borda-preta" src="Imagem1.png">
+      </div>
+    </section>
+
+    <section class="ranking-item">
+      <h2>Pular de um avião sem paraquedas e só um trampolim embaixo:</h2>
+      <div class="image-placeholder">
+        <img class="item-image borda-preta" src="Imagem2.png">
+      </div>
+    </section>
+
+    <section class="ranking-item">
+      <h2>Ir com uma caminhonete a mais 42.320 KM/H em uma rampa pra escapar da Terra:</h2>
+      <div class="image-placeholder">
+        <img class="item-image" src="Imagem3.png">
+      </div>
+    </section>
+
+    <section class="ranking-item">
+      <h2>Ir com uma máquina do tempo em 2008 antes de começar a funcionar o acelerador de partículas LHC você gerar um erro no acelerador de partículas pra gerar um buraco negro:</h2>
+      <div class="image-placeholder">
+        <img class="item-image" src="Imagem4.png">
+      </div>
+    </section>
+
+    <section class="ranking-item">
+      <h2>Voltar para 1939 e derrotar todos os inimigos da Alemanha para ela ganhar a Segunda Guerra Mundial:</h2>
+      <div class="image-placeholder">
+        <img class="item-image" src="Imagem5.png">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Pessoas que visitaram este site: <strong id="contador-visitas">1</strong></p>
+  </footer>
+
+  <script>
+    // Recupera o total global mantido no navegador
+    let totalVisitas = localStorage.getItem('totalVisitasUnicas') || 0;
+    
+    // Verifica se esta pessoa JÁ visitou nesta sessão do navegador
+    if (!sessionStorage.getItem('jaVisitouNestaSessao')) {
+      totalVisitas = Number(totalVisitas) + 1;
+      localStorage.setItem('totalVisitasUnicas', totalVisitas);
+      sessionStorage.setItem('jaVisitouNestaSessao', 'true');
+    }
+
+    document.getElementById('contador-visitas').textContent = totalVisitas;
+  </script>
+</body>
+</html>
